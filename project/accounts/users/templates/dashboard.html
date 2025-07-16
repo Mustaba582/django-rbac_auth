@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h2>Dashboard</h2>
+    <p>Welcome to your dashboard, {{ user.username }}!</p>
+    <p>Your role: {{ user.role.name|default:"No Role Assigned" }}</p>
+
+    <h3>Available Pages:</h3>
+    <ul>
+        {% if user.role.name == 'admin' %}
+            <li><a href="{% url 'admin_page' %}">Admin Page (Only for Admins)</a></li>
+        {% endif %}
+        {% if user.role.name == 'staff' %}
+            <li><a href="{% url 'staff_page' %}">Staff Page (Only for Staff)</a></li>
+        {% endif %}
+        {% if user.role.name == 'member' %}
+            <li><a href="{% url 'member_page' %}">Member Page (Only for Members)</a></li>
+        {% endif %}
+    </ul>
+{% endblock %}
