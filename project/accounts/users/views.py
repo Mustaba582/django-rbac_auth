@@ -49,7 +49,7 @@ def user_logout(request): # Renamed from logout_view for consistency with guide
 
 @login_required
 def dashboard(request):
-    return render(request, 'users/dashboard.html')
+    return render(request, 'dashboard.html')
 
 # Role-based access control helper functions
 def is_admin(user):
